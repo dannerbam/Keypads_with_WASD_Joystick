@@ -11,6 +11,17 @@ mapped to WASD Keys
 ### for Games 
 eg. Warzone, Raft, Rust, Fortnite, etc.
 
+## Arduino  - 30 Buttonbox with Joystick with Button
+
+### Full Customizable
+Number of Buttons
+
+### inkl. Joystick with Button
+mapped like a Joystick
+
+### for Games 
+with Joystick Support
+
 ## Hardware
 Pro Micro - https://amzn.to/3tZQDmh
 
@@ -33,3 +44,5 @@ PLA Filament green- https://amzn.to/3w8pIH4
 PLA Filament black - https://amzn.to/31soOH0
 
 MX Cherry Keycaps - https://amzn.to/31pfS5h
+
+PS: Sorry for my English
