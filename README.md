@@ -1,13 +1,14 @@
-# 30_Button_Keypad_And_WASD_Joystick
-Arduino  - 30 Button Keypad with WASD Joystick
+# Preferences
 
-## Full Customizable
+## Arduino  - 30 Button Keypad with WASD Joystick
+
+### Full Customizable
 individual Key Mapping even a Keyboard
 
-## inkl. Joystick
+### inkl. Joystick
 mapped to WASD Keys
 
-## for Games 
+### for Games 
 eg. Warzone, Raft, Rust, Fortnite, etc.
 
 ## Hardware
