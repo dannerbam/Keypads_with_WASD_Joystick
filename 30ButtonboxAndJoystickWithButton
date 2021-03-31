@@ -1,0 +1,95 @@
+//Gamepad with Joystick
+//USE  ProMicro
+//Copyright 2021 dannerbam
+
+#include <Keypad.h>
+#include <Joystick.h>
+
+#define NUMROWS 6
+#define NUMCOLS 5
+
+#define joyX A3
+#define joyY A2
+#define joyButton1 16
+
+int xAxis_ = 0;
+int yAxis_ = 0;
+
+//SetButton Default Status
+  int lastButton1 = 0;
+  int lastButtonState = 0;
+  int lastButton1State = 0;
+  
+byte buttons[NUMROWS][NUMCOLS] = {
+  {3,4,5,2,1},
+  {8,9,10,7,6},
+  {13,14,15,12,11},
+  {18,19,20,17,16},
+  {23,24,25,22,21},
+  {28,29,30,27,26},
+};
+
+byte rowPins[NUMROWS] = {15,14,19,18,10,9}; 
+byte colPins[NUMCOLS] = {8,7,6,5,4}; 
+
+Keypad buttbx = Keypad( makeKeymap(buttons), rowPins, colPins, NUMROWS, NUMCOLS); 
+
+Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, 
+  JOYSTICK_TYPE_JOYSTICK, 31, 0,
+  true, true, false, false, false, false,
+  false, false, false, false, false);
+
+void setup() {
+  pinMode(joyButton1, INPUT_PULLUP);
+  Joystick.begin();
+}
+
+void loop() { 
+
+  CheckAllButtons();
+
+  joy();
+
+}
+
+void CheckAllButtons(void) {
+      if (buttbx.getKeys())
+    {
+       for (int i=0; i<LIST_MAX; i++)   
+        {
+           if ( buttbx.key[i].stateChanged )   
+            {
+            switch (buttbx.key[i].kstate) {  
+                    case PRESSED:
+                    case HOLD:
+                              Joystick.setButton(buttbx.key[i].kchar, 1);
+                              break;
+                    case RELEASED:
+                    case IDLE:
+                              Joystick.setButton(buttbx.key[i].kchar, 0);
+                              break;
+            }
+           }   
+         }
+     }
+}
+
+void joy(void) {
+  /////////////// JOYSTICK ///////////////////
+  // put your main code here, to run repeatedly:
+  //Axis Runtime
+  xAxis_ = analogRead(joyX);
+  xAxis_ = map(xAxis_,0,1023,0,255);
+  Joystick.setXAxis(xAxis_);
+
+  yAxis_ = analogRead(joyY);
+  yAxis_ = map(yAxis_,0,1023,0,255);
+  Joystick.setYAxis(yAxis_);
+
+  int currentButton1State = !digitalRead(joyButton1);
+  if (currentButton1State != lastButton1State){
+    Joystick.setButton (0, currentButton1State);
+    lastButton1State = currentButton1State;
+  }
+  /////////////// JOYSTICK ///////////////////
+}
