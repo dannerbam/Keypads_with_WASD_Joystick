@@ -22,7 +22,7 @@ mapped like a Joystick
 ### for Games 
 with Joystick Support
 
-## Hardware
+# Hardware
 Pro Micro - https://amzn.to/3tZQDmh
 
 Pro Micro Set - https://amzn.to/3lW187v
